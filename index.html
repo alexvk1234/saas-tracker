@@ -1,0 +1,333 @@
+
+<h2 class="sr-only">SaaS analysis: 9 stocks ranked — SNOW +7.9%, HUBS +6.9%, VEEV +6.7%, NOW −4.8%. EOD prices April 16 2026.</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.page{padding:1rem 0;font-family:var(--font-sans)}
+.section-lbl{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:.75rem}
+.new-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:500;padding:2px 7px;border-radius:10px;background:#EEEDFE;color:#534AB7;margin-left:6px;vertical-align:middle}
+.ctx-bar{background:var(--color-background-secondary);border-left:3px solid #7F77DD;padding:10px 14px;border-radius:0 8px 8px 0;margin-bottom:1.5rem;font-size:12px;line-height:1.6;color:var(--color-text-secondary)}
+.ctx-bar b{color:var(--color-text-primary);font-weight:500}
+.quad-labels{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px}
+.ql{font-size:10px;padding:5px 10px;border-radius:6px;font-weight:500;text-align:center}
+.ql-green{background:#EAF3DE;color:#3B6D11}
+.ql-amber{background:#FAEEDA;color:#854F0B}
+.ql-blue{background:#E6F1FB;color:#185FA5}
+.ql-red{background:#FCEBEB;color:#A32D2D}
+.axis-row{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--color-text-secondary);margin-bottom:4px;padding:0 4px}
+.chart-container{position:relative;width:100%;height:320px}
+.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:1.5rem 0}
+.verdict-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.vcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:14px;display:grid;grid-template-columns:auto 1fr;gap:12px}
+.vcard.oversold{border-left:3px solid #1D9E75}
+.vcard.transitioning{border-left:3px solid #BA7517}
+.vcard.beneficiary{border-left:3px solid #7F77DD}
+.rank-n{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0}
+.rg{background:#EAF3DE;color:#3B6D11}
+.ra{background:#FAEEDA;color:#854F0B}
+.rp{background:#EEEDFE;color:#534AB7}
+.rb{background:#E6F1FB;color:#185FA5}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.ticker-name{flex:1}
+.t-sym{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.t-co{font-size:11px;color:var(--color-text-secondary);margin-top:1px}
+.verdict-pill{font-size:10px;font-weight:500;padding:3px 9px;border-radius:12px;white-space:nowrap;flex-shrink:0}
+.vp-green{background:#EAF3DE;color:#3B6D11}
+.vp-amber{background:#FAEEDA;color:#854F0B}
+.vp-purple{background:#EEEDFE;color:#534AB7}
+.vp-blue{background:#E6F1FB;color:#185FA5}
+.ai-analysis{font-size:12px;color:var(--color-text-secondary);margin-top:6px;line-height:1.55;padding:7px 10px;background:var(--color-background-secondary);border-radius:6px}
+.ai-analysis b{color:var(--color-text-primary);font-weight:500}
+.valuation-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.tag{font-size:11px;padding:2px 7px;border-radius:4px;font-weight:500}
+.tg{background:#EAF3DE;color:#3B6D11}
+.ta{background:#FAEEDA;color:#854F0B}
+.tr{background:#FCEBEB;color:#A32D2D}
+.tb{background:#E6F1FB;color:#185FA5}
+.tp{background:#EEEDFE;color:#534AB7}
+.tgr{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.price-chg{font-size:10px;margin-left:5px;font-weight:400}
+.price-down{color:#C0392B}
+.price-up{color:#1D9E75}
+</style>
+
+<div class="page">
+
+<div class="ctx-bar">
+<b>What changed (EOD Apr 16):</b> Divergent session — SNOW broke its litigation ceiling, surging from $135.75 → $146.53 (+7.9%) even as the April 27 lead-plaintiff deadline looms. <b>HUBS and VEEV extended the recovery</b>: HUBS rose from $208.00 → $222.25 (+6.9%) and VEEV jumped from $158.45 → $169.04 (+6.7%). INTU gained +3.1% to $392.82. <b>NOW was the session's clear loser</b>: −4.8% to $89.06 as both RBC (cut target to $121) and TD Cowen (cut target to $140) slashed forecasts on the same day, with headlines calling out an "AI strategy reset." DDOG held flat at $121.06 despite Capital One lowering expectations. ADSK, CRM, and TYL posted modest gains. Rankings unchanged.
+</div>
+
+<div class="section-lbl">AI disruption risk vs valuation attractiveness</div>
+<div class="quad-labels">
+  <div class="ql ql-green">Best buys — low risk, cheap</div>
+  <div class="ql ql-amber">Transitioning — risk but adapting</div>
+  <div class="ql ql-blue">Safe, fully priced</div>
+  <div class="ql ql-red">Avoid — genuine risk</div>
+</div>
+<div class="axis-row"><span>← Low AI disruption risk</span><span>High AI disruption risk →</span></div>
+<div class="chart-container">
+  <canvas id="matrix2" role="img" aria-label="Scatter matrix: 9 stocks plotted on AI structural risk vs valuation attractiveness. INTU, ADSK, HUBS, SNOW and DDOG in top-left best buys quadrant. CRM center-left. VEEV and NOW transitioning. TYL bottom-left safe but priced.">9 stocks on AI risk vs valuation axes.</canvas>
+</div>
+
+<hr class="divider">
+
+<div class="section-lbl">Final rankings — EOD April 16 2026</div>
+<div class="verdict-grid">
+
+<!-- #1 INTU -->
+<div class="vcard oversold">
+  <div class="rank-n rg">1</div>
+  <div>
+    <div class="card-head">
+      <div class="ticker-name">
+        <div class="t-sym">INTU — Intuit <span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">$392.82</span><span class="price-chg price-up">▲ from $381.85</span></div>
+        <div class="t-co">TurboTax · QuickBooks · Credit Karma · Anthropic partner</div>
+      </div>
+      <span class="verdict-pill vp-green">Unnecessarily oversold</span>
+    </div>
+    <div class="ai-analysis"><b>AI verdict:</b> Tax law is written by governments. Compliance software serves a legal mandate, not a productivity preference. The sell-off was sector contagion applied to a company that was an AI pioneer before the panic started — Fortune confirmed it was the worst-performing S&P 500 stock in January despite <i>zero fundamental deterioration</i>. The Q2 FY2026 beat with 17% revenue growth, a halted insider sales programme, 15% dividend raise, and contractual ownership of the customer experience layer in its Anthropic/OpenAI deals make this the clearest mispricing in the group. The 4.1% rally today from $367 → $381.85 confirms the market is beginning to reprice what was always a sector-contagion selloff — but the thesis is unchanged and the stock still trades well below intrinsic value.</div>
+    <div class="valuation-row">
+      <span class="tag tg">Fwd P/E ~16x</span><span class="tag tg">PEG ~1.1</span><span class="tag tb">Rev +17%</span><span class="tag tg">Buybacks accelerating</span><span class="tag tg">AI risk: None</span>
+    </div>
+  </div>
+</div>
+
+<!-- #2 ADSK -->
+<div class="vcard oversold">
+  <div class="rank-n rg">2</div>
+  <div>
+    <div class="card-head">
+      <div class="ticker-name">
+        <div class="t-sym">ADSK — Autodesk <span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">$243.16</span><span class="price-chg price-up">▲ from $239.32</span></div>
+        <div class="t-co">AutoCAD · Revit · Civil 3D · BIM 360</div>
+      </div>
+      <span class="verdict-pill vp-green">Unnecessarily oversold</span>
+    </div>
+    <div class="ai-analysis"><b>AI verdict:</b> Pure collateral damage. Autodesk's seat counts are tied to engineers designing physical infrastructure — bridges, data centres, hospitals, aircraft. AI cannot conjure rebar. It can help engineers do more Autodesk-denominated work, not less. There is no seat compression dynamic here. At a PEG of 0.97 with 17.5% revenue growth, 40% ROE, and margins expanding 340bps, this is mathematically cheap and logically mispriced. The 24-analyst consensus Buy with a $336 target implies 47% upside. The 4.7% gain today from $228.59 → $239.32 confirms the market is increasingly repricing the collateral damage — though at $239 the stock still sits 29% below the 24-analyst consensus target of $336.</div>
+    <div class="valuation-row">
+      <span class="tag tg">Fwd P/E 19x</span><span class="tag tg">PEG 0.97</span><span class="tag tb">Rev +17.5%</span><span class="tag tg">ROIC 39%</span><span class="tag tg">AI risk: None</span>
+    </div>
+  </div>
+</div>
+
+<!-- #3 HUBS — NEW -->
+<div class="vcard oversold">
+  <div class="rank-n rg">3</div>
+  <div>
+    <div class="card-head">
+      <div class="ticker-name">
+        <div class="t-sym">HUBS — HubSpot <span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">$222.25</span><span class="price-chg price-up">▲ from $208.00</span></div>
+        <div class="t-co">Marketing Hub · Sales Hub · Service Hub · Breeze AI · Agentic CRM</div>
+      </div>
+      <span class="verdict-pill vp-green">Unnecessarily oversold — AI pivot executing</span>
+    </div>
+    <div class="ai-analysis"><b>AI verdict:</b> The bear case applies the AI threat backwards. The concern — that AI tools will replace marketing automation — ignores that HubSpot <i>is building</i> the AI marketing platform that replaces legacy approaches. They now brand themselves "the agentic customer platform." Breeze AI is embedded across every Hub. The Spring 2026 Spotlight launched HubSpot AEO (AI Engine Optimisation — a next-generation SEO product for the AI search era) and an expanded Prospecting Agent. Revenue grew 19% in 2025 to $3.13B with operating profit up 26%. The forward P/E has compressed to 19.5x — <i>below the sector median of 21x</i> — and the PEG sits at 0.65 versus a sector median of 1.32. HubSpot has 288,706 customers (+16% YoY). 32 analysts rate it Strong Buy with an average target of $443 — 115% upside from current levels. Citi still targets $368 (Buy) after cutting from $640. The stock is down 70% from its 52-week high of $682.57, trading at levels last seen years before its current revenue scale. This is the best new addition on the board.</div>
+    <div class="valuation-row">
+      <span class="tag tg">Fwd P/E 19.5x</span><span class="tag tg">PEG 0.65</span><span class="tag tb">Rev +19%</span><span class="tag tg">288K customers +16%</span><span class="tag tg">$443 avg target</span><span class="tag tp">Agentic pivot live</span>
+    </div>
+  </div>
+</div>
+
+<!-- #4 CRM -->
+<div class="vcard oversold">
+  <div class="rank-n rg">4</div>
+  <div>
+    <div class="card-head">
+      <div class="ticker-name">
+        <div class="t-sym">CRM — Salesforce <span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">$179.11</span><span class="price-chg price-up">▲ from $177.80</span></div>
+        <div class="t-co">Agentforce · Data Cloud · Slack</div>
+      </div>
+      <span class="verdict-pill vp-green">Oversold — pivot now confirmed</span>
+    </div>
+    <div class="ai-analysis"><b>AI verdict:</b> The bear case was legitimate — seat compression was a real threat to CRM. But the pivot to outcome-based pricing is no longer theoretical: Agentforce closed 22,000 paid deals in Q4 2025 alone, combined Agentforce + Data Cloud ARR hit $1.8B (up from $1.4B just one quarter earlier), and the platform served 11.14 trillion tokens in production-scale deployment. Salesforce generates more free cash flow than ServiceNow and Workday combined, yet trades near multi-year valuation lows. At $177.80 the market is slowly repricing the old bear case — even after Agentforce proved it out. Today's 3.8% gain was sector-driven, not a fundamental catalyst; the thesis remains unchanged.</div>
+    <div class="valuation-row">
+      <span class="tag tg">P/E TTM ~22x</span><span class="tag tg">FCF ~$15B/yr</span><span class="tag tb">Rev +9%</span><span class="tag tg">Agentforce $1.8B ARR</span><span class="tag ta">Pivot executing</span>
+    </div>
+  </div>
+</div>
+
+<!-- #5 DDOG -->
+<div class="vcard beneficiary">
+  <div class="rank-n rp">5</div>
+  <div>
+    <div class="card-head">
+      <div class="ticker-name">
+        <div class="t-sym">DDOG — Datadog <span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">$121.06</span></div>
+        <div class="t-co">Cloud observability · Security · AI monitoring</div>
+      </div>
+      <span class="verdict-pill vp-purple">AI infrastructure beneficiary</span>
+    </div>
+    <div class="ai-analysis"><b>AI verdict:</b> This is the only stock on this list that is a <i>direct beneficiary</i> of AI proliferation rather than a target of it. Every AI agent, every LLM inference pipeline, every autonomous workflow deployment needs to be monitored, traced, and secured. More AI = more Datadog. The company grew revenue 29% with 80% gross margins and is GAAP profitable. Its SRE agent product is purpose-built for AI-native infrastructure. The 9.5% surge today from $110.57 → $121.06 — the session's biggest move in the group — confirms the AI infrastructure thesis is being priced back in. 33 analysts average $176 (Buy). Still down 30%+ from 52-week highs with the AI tailwind fully intact: this is the most attractive <i>growth</i> name in the group, and today's re-rating is just the start.</div>
+    <div class="valuation-row">
+      <span class="tag tp">AI beneficiary</span><span class="tag tg">Gross margin 80%</span><span class="tag tb">Rev +29%</span><span class="tag tg">GAAP profitable</span><span class="tag tg">$176 avg target</span><span class="tag tp">More AI = more DDOG</span>
+    </div>
+  </div>
+</div>
+
+<!-- #6 SNOW — NEW -->
+<div class="vcard beneficiary">
+  <div class="rank-n rp">6</div>
+  <div>
+    <div class="card-head">
+      <div class="ticker-name">
+        <div class="t-sym">SNOW — Snowflake <span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">$146.53</span><span class="price-chg price-up">▲ from $135.75</span></div>
+        <div class="t-co">AI Data Cloud · Snowflake Intelligence · Project SnowWork</div>
+      </div>
+      <span class="verdict-pill vp-purple">AI data beneficiary — litigation caveat</span>
+    </div>
+    <div class="ai-analysis"><b>AI verdict:</b> The SaaSpocalypse thesis was applied incorrectly here. SNOW is not a seat-based subscription platform — it's a consumption-based data cloud where revenue is directly proportional to usage. More AI workloads = more data processed = more Snowflake consumption. The company grew revenue 30% in Q4 with RPO up 42% to $9.77B — contracted demand already in place. Net revenue retention is 125% (customers keep spending more). 9,100 customers now use AI features and Snowflake Intelligence reached 2,500 accounts in three months (fastest ramp in company history). FY2027 guidance: $5.66B product revenue, 27% growth. 45 analysts rate it Strong Buy with a $247 average target — 76% upside from $135. Down 52% from its 52-week high of $280.67. <b>Key risk:</b> ongoing securities class-action lawsuit with lead-plaintiff deadline April 27, 2026 — litigation overhang could keep short-term pressure on the stock regardless of fundamentals. Position sizing should reflect that near-term uncertainty. Still GAAP unprofitable ($1.33B operating loss FY2026). SNOW gained only +0.3% on April 15 despite a 3%+ sector rally — the litigation deadline appears to be actively suppressing recovery. Best bought in tranches, with the first earnings print after the lawsuit resolves as a cleaner entry signal.</div>
+    <div class="valuation-row">
+      <span class="tag tp">AI data beneficiary</span><span class="tag tb">Rev +30%</span><span class="tag tg">RPO +42%</span><span class="tag tg">NRR 125%</span><span class="tag tg">$247 avg target</span><span class="tag tr">Litigation Apr 27</span><span class="tag ta">GAAP -$1.33B</span>
+    </div>
+  </div>
+</div>
+
+<!-- #7 VEEV -->
+<div class="vcard oversold">
+  <div class="rank-n rb">7</div>
+  <div>
+    <div class="card-head">
+      <div class="ticker-name">
+        <div class="t-sym">VEEV — Veeva Systems <span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">$169.04</span><span class="price-chg price-up">▲ from $158.45</span></div>
+        <div class="t-co">Life sciences cloud · Vault CRM · R&amp;D solutions</div>
+      </div>
+      <span class="verdict-pill vp-green">Sector panic + risk overblown</span>
+    </div>
+    <div class="ai-analysis"><b>AI verdict:</b> Two sell-off catalysts hit simultaneously: sector panic AND Salesforce Life Sciences Cloud competitive noise. Both are overstated. Vault CRM has 140 live customers including 10 of the top-20 biopharmas committed globally. Pharma companies don't rip out FDA-compliant audit trail systems on a competitive whim. AI in life sciences (pharmacovigilance, eTMF, trial management) <i>accelerates</i> Veeva's value proposition — they're rolling out Vault CRM Bot and AI agents now. FCF margins 40%, $6.4B net cash, $2B buyback active. At $159 the stock is already trading below Citi's $176 target. The strongest quality/price ratio on the list after INTU. Ranked #7 (down from #5) only because HUBS and SNOW represent more extreme dislocations.</div>
+    <div class="valuation-row">
+      <span class="tag tg">17x 2027 FCF</span><span class="tag tg">Op margin 45%</span><span class="tag tb">Rev +16%</span><span class="tag tg">$6.4B net cash</span><span class="tag ta">Citi overhang</span>
+    </div>
+  </div>
+</div>
+
+<!-- #8 NOW -->
+<div class="vcard transitioning">
+  <div class="rank-n ra">8</div>
+  <div>
+    <div class="card-head">
+      <div class="ticker-name">
+        <div class="t-sym">NOW — ServiceNow <span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">$89.06</span><span class="price-chg price-down">▼ from $93.57</span></div>
+        <div class="t-co">Now Platform · Now Assist · Pro Plus</div>
+      </div>
+      <span class="verdict-pill vp-amber">Transitioning — wait for Q1 print</span>
+    </div>
+    <div class="ai-analysis"><b>AI verdict:</b> The risk was real — seat compression in IT/HR workflows was a legitimate threat. The pivot evidence is also real: Now Assist crossed $1B ACV (fastest product launch in company history), Pro Plus tiers carry 25–40% pricing premiums with strong Fortune 500 adoption, and the $5B share buyback authorisation signals management confidence. Down 56% from its $211 52-week high to $93.57, GF Value $219, Morningstar FV $359. The freshest UBS downgrade and ongoing SaaSpocalypse sentiment is keeping pressure on a stock that may already have bottomed. Best upside of any name here IF Q1 2026 earnings (late April) confirm the Now Assist trajectory. Position sizing should reflect that uncertainty.</div>
+    <div class="valuation-row">
+      <span class="tag tg">Now Assist $1B ACV</span><span class="tag tb">Rev +22%</span><span class="tag ta">UBS downgraded</span><span class="tag tg">Morningstar FV $359</span><span class="tag ta">Q1 binary event</span>
+    </div>
+  </div>
+</div>
+
+<!-- #9 TYL -->
+<div class="vcard oversold">
+  <div class="rank-n rb">9</div>
+  <div>
+    <div class="card-head">
+      <div class="ticker-name">
+        <div class="t-sym">TYL — Tyler Technologies <span style="font-size:11px;font-weight:400;color:var(--color-text-secondary)">$339.84</span><span class="price-chg price-up">▲ from $337.92</span></div>
+        <div class="t-co">Government &amp; public sector SaaS only</div>
+      </div>
+      <span class="verdict-pill vp-green">Unnecessarily oversold — defensive</span>
+    </div>
+    <div class="ai-analysis"><b>AI verdict:</b> Zero genuine AI disruption risk. Government procurement cycles are impervious to LLM hype cycles. The 47.6% decline from highs was caused by a Q4 2025 hardware/maintenance miss — not AI. SaaS revenue is growing 21% with a zero-debt balance sheet and AI partnerships (Anthropic, AWS, OpenAI) providing upside optionality rather than competitive threat. All 18 covering analysts rate it Buy, average target $441. Ranked last here not from risk but from valuation: at 44x TTM earnings it is the most expensive "safe" name and the least interesting entry point. Best held for the risk-averse or added on further weakness.</div>
+    <div class="valuation-row">
+      <span class="tag tg">P/FCF 21x</span><span class="tag tb">SaaS rev +21%</span><span class="tag tg">Zero debt</span><span class="tag tg">18/18 Buy</span><span class="tag ta">44x TTM P/E</span>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const stocks2 = [
+  {label:'INTU', x:1.2, y:9.2, color:'#1D9E75', isNew:false},
+  {label:'ADSK', x:0.8, y:8.8, color:'#1D9E75', isNew:false},
+  {label:'HUBS', x:2.2, y:9.0, color:'#1D9E75', isNew:true},
+  {label:'CRM',  x:3.5, y:8.2, color:'#1D9E75', isNew:false},
+  {label:'DDOG', x:1.5, y:8.5, color:'#7F77DD', isNew:false},
+  {label:'SNOW', x:1.8, y:8.0, color:'#7F77DD', isNew:true},
+  {label:'VEEV', x:2.8, y:7.2, color:'#1D9E75', isNew:false},
+  {label:'NOW',  x:5.2, y:7.8, color:'#BA7517', isNew:false},
+  {label:'TYL',  x:1.0, y:6.2, color:'#185FA5', isNew:false}
+];
+
+const quadBg2 = {
+  id:'quadrants2',
+  beforeDraw(chart) {
+    const {ctx, chartArea:{left,right,top,bottom}} = chart;
+    const midX = chart.scales.x.getPixelForValue(5.5);
+    const midY = chart.scales.y.getPixelForValue(5.5);
+    ctx.save();
+    [{x:left,y:top,w:midX-left,h:midY-top,f:'rgba(29,158,117,0.06)'},
+     {x:midX,y:top,w:right-midX,h:midY-top,f:'rgba(186,117,23,0.06)'},
+     {x:left,y:midY,w:midX-left,h:bottom-midY,f:'rgba(24,95,165,0.06)'},
+     {x:midX,y:midY,w:right-midX,h:bottom-midY,f:'rgba(226,75,74,0.06)'}
+    ].forEach(q=>{ctx.fillStyle=q.f;ctx.fillRect(q.x,q.y,q.w,q.h)});
+    ctx.strokeStyle='rgba(0,0,0,0.08)';ctx.setLineDash([4,4]);ctx.lineWidth=0.8;
+    ctx.beginPath();ctx.moveTo(midX,top);ctx.lineTo(midX,bottom);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(left,midY);ctx.lineTo(right,midY);ctx.stroke();
+    ctx.restore();
+  }
+};
+
+const labelPlugin2 = {
+  id:'labels2',
+  afterDatasetsDraw(chart) {
+    const ctx = chart.ctx;
+    chart.data.datasets.forEach((ds,i)=>{
+      const meta = chart.getDatasetMeta(i);
+      if(meta.data[0]){
+        const pt = meta.data[0];
+        const s = stocks2[i];
+        ctx.save();
+        ctx.font = `${s.isNew ? '600' : '500'} 11px sans-serif`;
+        ctx.fillStyle = ds.borderColor;
+        const label = s.isNew ? ds.label + ' ★' : ds.label;
+        ctx.fillText(label, pt.x+9, pt.y-6);
+        ctx.restore();
+      }
+    });
+  }
+};
+
+new Chart(document.getElementById('matrix2'),{
+  type:'bubble',
+  data:{
+    datasets:stocks2.map(s=>({
+      label:s.label,
+      data:[{x:s.x,y:s.y,r:s.isNew?13:10}],
+      backgroundColor:s.color+'33',
+      borderColor:s.color,
+      borderWidth:s.isNew?2.5:1.5
+    }))
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>{
+        const s=stocks2[ctx.datasetIndex];
+        const v={
+          INTU:'Unnecessarily oversold — no AI risk',
+          ADSK:'Unnecessarily oversold — no seat compression',
+          HUBS:'Unnecessarily oversold — agentic pivot live ★ new',
+          CRM:'Oversold — pivot confirmed',
+          DDOG:'AI infrastructure beneficiary — now cheaper',
+          SNOW:'AI data beneficiary — litigation caveat ★ new',
+          VEEV:'Sector panic + competition overblown',
+          NOW:'Transitioning — wait for Q1',
+          TYL:'Oversold — defensive, fully priced'
+        };
+        return `${s.label}: ${v[s.label]}`;
+      }}}
+    },
+    scales:{
+      x:{min:0,max:10.5,title:{display:true,text:'AI structural disruption risk →',font:{size:10},color:'#888'},ticks:{display:false},grid:{color:'rgba(0,0,0,0.04)'}},
+      y:{min:2,max:11,title:{display:true,text:'Valuation attractiveness (cheap ↑)',font:{size:10},color:'#888'},ticks:{display:false},grid:{color:'rgba(0,0,0,0.04)'}}
+    },
+    layout:{padding:{top:14,right:35,bottom:8}}
+  },
+  plugins:[quadBg2,labelPlugin2]
+});
+</script>
